@@ -4,7 +4,7 @@ import com.hybridsakura.project.app.luminabot.extra.LuminaGacha;
 import com.hybridsakura.project.app.luminabot.helper.LuminaPrebuild;
 import net.lz1998.pbbot.bot.Bot;
 import net.lz1998.pbbot.bot.BotPlugin;
-import net.lz1998.pbbot.helper.LuminaPluginHelper;
+import com.hybridsakura.project.app.luminabot.helper.LuminaPluginHelper;
 import net.lz1998.pbbot.helper.entity.LuminaRequireSetup;
 import onebot.OnebotEvent;
 import org.jetbrains.annotations.NotNull;

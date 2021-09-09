@@ -1,8 +1,5 @@
-package net.lz1998.pbbot.helper
+package com.hybridsakura.project.app.luminabot.helper
 
-import com.hybridsakura.project.app.luminabot.helper.LuminaCourier
-import com.hybridsakura.project.app.luminabot.helper.LuminaDetectHelper
-import com.hybridsakura.project.app.luminabot.helper.LuminaPrebuild
 import com.hybridsakura.project.common.LuminaCommon
 import net.lz1998.pbbot.bot.Bot
 import net.lz1998.pbbot.helper.entity.LuminaRequireSetup
