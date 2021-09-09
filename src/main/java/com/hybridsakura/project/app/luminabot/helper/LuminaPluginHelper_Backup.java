@@ -1,4 +1,4 @@
-package com.hybridsakura.project.app.luminabot.helper;//package net.lz1998.pbbot.helper;
+//package com.hybridsakura.project.app.luminabot.helper;//package net.lz1998.pbbot.helper;
 //
 //import net.lz1998.pbbot.bot.Bot;
 //import net.lz1998.pbbot.helper.entity.LuminaRequireSetup;
@@ -9,8 +9,8 @@ package com.hybridsakura.project.app.luminabot.helper;//package net.lz1998.pbbot
 //import java.util.List;
 //import java.util.Map;
 //
-//import static net.lz1998.pbbot.helper.LuminaCommon.RETURN_IMAGE;
-//import static net.lz1998.pbbot.helper.LuminaCommon.RETURN_TEXT;
+//import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
+//
 //
 //@SuppressWarnings("DuplicatedCode")
 //public class LuminaPluginHelper_Backup {
@@ -18,6 +18,7 @@ package com.hybridsakura.project.app.luminabot.helper;//package net.lz1998.pbbot
 //    LuminaPrebuild luminaPrebuild = new LuminaPrebuild();
 //    LuminaDetectHelper luminaDetectHelper = new LuminaDetectHelper();
 //    LuminaCourier luminaCourier = new LuminaCourier();
+//    private String RETURN_IMAGE;
 //
 //    public void sendBasicMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event, LuminaRequireSetup luminaRequireSetup) {
 //

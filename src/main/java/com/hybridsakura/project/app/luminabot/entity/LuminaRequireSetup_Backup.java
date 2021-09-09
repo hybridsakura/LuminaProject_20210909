@@ -1,4 +1,4 @@
-package com.hybridsakura.project.app.luminabot.entity;//package net.lz1998.pbbot.helper.entity;
+//package com.hybridsakura.project.app.luminabot.entity;
 //
 //import java.io.Serializable;
 //import java.util.List;
