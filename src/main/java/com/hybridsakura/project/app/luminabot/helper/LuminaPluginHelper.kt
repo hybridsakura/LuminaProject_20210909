@@ -2,7 +2,7 @@ package com.hybridsakura.project.app.luminabot.helper
 
 import com.hybridsakura.project.common.LuminaCommon
 import net.lz1998.pbbot.bot.Bot
-import net.lz1998.pbbot.helper.entity.LuminaRequireSetup
+import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup
 import net.lz1998.pbbot.utils.Msg
 import onebot.OnebotEvent.GroupMessageEvent
 

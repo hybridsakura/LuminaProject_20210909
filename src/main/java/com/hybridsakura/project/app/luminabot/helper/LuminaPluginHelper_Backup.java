@@ -1,7 +1,7 @@
 //package com.hybridsakura.project.app.luminabot.helper;//package net.lz1998.pbbot.helper;
 //
 //import net.lz1998.pbbot.bot.Bot;
-//import net.lz1998.pbbot.helper.entity.LuminaRequireSetup;
+//import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup;
 //import net.lz1998.pbbot.utils.Msg;
 //import onebot.OnebotEvent;
 //import org.jetbrains.annotations.NotNull;

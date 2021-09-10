@@ -1,4 +1,4 @@
-package net.lz1998.pbbot.helper.entity
+package com.hybridsakura.project.app.luminabot.entity
 
 import java.io.Serializable
 

@@ -1,7 +1,7 @@
 package com.hybridsakura.project.app.luminabot.helper;
 
 import com.hybridsakura.project.app.luminabot.entity.OrderSetup;
-import net.lz1998.pbbot.helper.entity.LuminaRequireSetup;
+import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup;
 import org.jetbrains.annotations.NotNull;
 
 import static com.hybridsakura.project.common.LuminaCommon.LUMINA_KEYWORD;

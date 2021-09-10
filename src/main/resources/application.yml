@@ -8,8 +8,14 @@ spring:
       - com.hybridsakura.project.plugins.MiyakoGroupPlugin # ????
       - com.hybridsakura.project.plugins.LuminaGroupPlugin # ????
       - com.hybridsakura.project.plugins.LuminaOrderPlugin # ????
+      - com.hybridsakura.project.plugins.MinecraftGroupPlugin
 #      - net.lz1998.pbbot.plugin.ImagePlugin # ????????
 #      - net.lz1998.pbbot.plugin.HelloPlugin # ????
 
 server:
   port: 8081
+
+logging:
+  file:
+    name: logs/luminabot.log
+
