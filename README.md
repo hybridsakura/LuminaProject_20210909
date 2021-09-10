@@ -1,4 +1,4 @@
-# 混合项目 LuminaRobot with MinecraftCodeGen & DataExcel
+# LuminaRobot with MinecraftCodeGen & DataExcel
 ## 基于ProtobufBot/Spring-Mirai-Server
 ### 从LuminaProject_20210830迁移并预计整合其他子项目
 
