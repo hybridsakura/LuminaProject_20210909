@@ -1,4 +1,4 @@
 package com.hybridsakura.project.plugins;
 
-public class LuminaPrivatePlugin {
+public class GroupPlugin_Counter {
 }

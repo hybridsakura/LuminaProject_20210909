@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MiyakoPrivatePlugin  extends BotPlugin {
+public class PrivatePlugin_MiyakoTest extends BotPlugin {
 
     @Override
     public int onPrivateMessage(@NotNull Bot bot, @NotNull OnebotEvent.PrivateMessageEvent event) {

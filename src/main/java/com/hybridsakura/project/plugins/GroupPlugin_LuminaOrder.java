@@ -16,7 +16,7 @@ import java.util.Map;
 
 @SuppressWarnings("DuplicatedCode")
 @Component
-public class LuminaOrderPlugin extends BotPlugin {
+public class GroupPlugin_LuminaOrder extends BotPlugin {
 
     LuminaPluginHelper pluginHelper = new LuminaPluginHelper();
     LuminaPrebuild luminaPrebuild = new LuminaPrebuild();

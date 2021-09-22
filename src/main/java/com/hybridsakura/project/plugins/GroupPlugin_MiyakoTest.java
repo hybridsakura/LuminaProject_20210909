@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Random;
 
 @Component
-public class MiyakoGroupPlugin extends BotPlugin {
+public class GroupPlugin_MiyakoTest extends BotPlugin {
 
     @Override
     public int onGroupMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event) {

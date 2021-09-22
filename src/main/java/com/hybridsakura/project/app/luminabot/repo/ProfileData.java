@@ -15,7 +15,7 @@ public class ProfileData implements Serializable {
     private String reqMasterKeyword;                                                //  侦测匹配主关键字
     private String reqSecondKeyword;                                                //  侦测匹配次关键字
     private Boolean reqMasterMatched;                                               //
-    private Boolean reqSecondMatched;                                                //
+    private Boolean reqSecondMatched;                                               //
     private String respKeyword;
 
     public String getUuid() {

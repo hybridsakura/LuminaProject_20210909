@@ -21,7 +21,7 @@ import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
 
 @SuppressWarnings("DuplicatedCode")
 @Component
-public class MinecraftGroupPlugin extends BotPlugin {
+public class GroupPlugin_Minecraft extends BotPlugin {
 
     LuminaPluginHelper pluginHelper = new LuminaPluginHelper();
     LuminaEngine luminaEngine = new LuminaEngine();

@@ -20,7 +20,7 @@ import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
 
 @SuppressWarnings("DuplicatedCode")
 @Component
-public class LuminaGroupPlugin extends BotPlugin {
+public class GroupPlugin_LuminaMain extends BotPlugin {
 
     LuminaPluginHelper pluginHelper = new LuminaPluginHelper();
     LuminaPrebuild luminaPrebuild = new LuminaPrebuild();
