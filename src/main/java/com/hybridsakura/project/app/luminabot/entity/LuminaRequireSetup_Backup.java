@@ -82,16 +82,16 @@
 //    }
 //
 //    public void setRequireRespAt(boolean requireRespAt) {
-//        if("lumina-reply_with_at".equals(this.respMode)) {
-//            this.requireRespAt = true;
-//            this.requireRespReply = false;
-//        }else if("lumina-reply_last_message".equals(this.respMode)) {
-//            this.requireRespAt = false;
-//            this.requireRespReply = true;
-//        }else {
+////        if("lumina-reply_with_at".equals(this.respMode)) {
+////            this.requireRespAt = true;
+////            this.requireRespReply = false;
+////        }else if("lumina-reply_last_message".equals(this.respMode)) {
+////            this.requireRespAt = false;
+////            this.requireRespReply = true;
+////        }else {
 //            this.requireRespAt = requireRespAt;
-//            this.requireRespReply = !this.requireRespAt;
-//        }
+////            this.requireRespReply = !this.requireRespAt;
+////        }
 //    }
 //
 //    public boolean isRequireRespReply() {
@@ -99,16 +99,16 @@
 //    }
 //
 //    public void setRequireRespReply(boolean requireRespReply) {
-//        if("lumina-reply_last_message".equals(this.respMode)) {
-//            this.requireRespReply = true;
-//            this.requireRespAt = false;
-//        }else if("lumina-reply_with_at".equals(this.respMode)) {
-//            this.requireRespReply = false;
-//            this.requireRespAt = true;
-//        }else {
+////        if("lumina-reply_last_message".equals(this.respMode)) {
+////            this.requireRespReply = true;
+////            this.requireRespAt = false;
+////        }else if("lumina-reply_with_at".equals(this.respMode)) {
+////            this.requireRespReply = false;
+////            this.requireRespAt = true;
+////        }else {
 //            this.requireRespReply = requireRespReply;
-//            this.requireRespAt = !this.requireRespReply;
-//        }
+////            this.requireRespAt = !this.requireRespReply;
+////        }
 //    }
 //
 //    public String getRespMode() {

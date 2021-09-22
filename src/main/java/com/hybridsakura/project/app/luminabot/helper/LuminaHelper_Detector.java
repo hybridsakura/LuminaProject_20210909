@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class LuminaDetectHelper {
+public class LuminaHelper_Detector {
 
     public boolean checkDetectMainKeyword(@NotNull String rawMessage, @NotNull String masterKeyword, String secondKeyword, boolean requireKeywordMatch) {
         if("".equals(secondKeyword) || secondKeyword == null) {

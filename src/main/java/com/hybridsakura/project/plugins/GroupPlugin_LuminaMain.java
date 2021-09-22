@@ -1,10 +1,10 @@
 package com.hybridsakura.project.plugins;
 
-import com.hybridsakura.project.app.luminabot.extra.LuminaGacha;
-import com.hybridsakura.project.app.luminabot.helper.LuminaPrebuild;
+import com.hybridsakura.project.app.luminabot.extra.BotApp_Gacha;
+import com.hybridsakura.project.app.luminabot.helper.LuminaHelper_Prebuild;
 import net.lz1998.pbbot.bot.Bot;
 import net.lz1998.pbbot.bot.BotPlugin;
-import com.hybridsakura.project.app.luminabot.helper.LuminaPluginHelper;
+import com.hybridsakura.project.app.luminabot.helper.LuminaSender_LuminaRobot;
 import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup;
 import onebot.OnebotEvent;
 import org.jetbrains.annotations.NotNull;
@@ -22,9 +22,9 @@ import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
 @Component
 public class GroupPlugin_LuminaMain extends BotPlugin {
 
-    LuminaPluginHelper pluginHelper = new LuminaPluginHelper();
-    LuminaPrebuild luminaPrebuild = new LuminaPrebuild();
-    LuminaGacha luminaGacha = new LuminaGacha();
+    LuminaSender_LuminaRobot pluginHelper = new LuminaSender_LuminaRobot();
+    LuminaHelper_Prebuild luminaHelperPrebuild = new LuminaHelper_Prebuild();
+    BotApp_Gacha luminaBotAppGacha = new BotApp_Gacha();
 
     @Override
     public int onGroupMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event) {
@@ -139,8 +139,8 @@ public class GroupPlugin_LuminaMain extends BotPlugin {
         setupGacha.setRequireRespAt(false);
         setupGacha.setRequireRespReply(true);
         //  构造回复信息
-        loadedReturnText_Gacha.add(luminaGacha.gachaResultGen().get(0));
-        loadedReturnImage_Gacha.add(luminaGacha.gachaResultGen().get(1));
+        loadedReturnText_Gacha.add(luminaBotAppGacha.gachaResultGen().get(0));
+        loadedReturnImage_Gacha.add(luminaBotAppGacha.gachaResultGen().get(1));
         hybridMessageMap_Gacha.put(RETURN_TEXT, loadedReturnText_Gacha);
         hybridMessageMap_Gacha.put(RETURN_IMAGE, loadedReturnImage_Gacha);
         //  构造的参数包装统一设定

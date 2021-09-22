@@ -13,11 +13,11 @@
 //
 //
 //@SuppressWarnings("DuplicatedCode")
-//public class LuminaPluginHelper_Backup {
+//public class LuminaSender_LuminaRobot_Backup {
 //
-//    LuminaPrebuild luminaPrebuild = new LuminaPrebuild();
-//    LuminaDetectHelper luminaDetectHelper = new LuminaDetectHelper();
-//    LuminaCourier luminaCourier = new LuminaCourier();
+//    LuminaHelper_Prebuild luminaHelperPrebuild = new LuminaHelper_Prebuild();
+//    LuminaHelper_Detector luminaHelperDetectUtil = new LuminaHelper_Detector();
+//    LuminaSender_Courier luminaSenderCourier = new LuminaSender_Courier();
 //    private String RETURN_IMAGE;
 //
 //    public void sendBasicMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event, LuminaRequireSetup luminaRequireSetup) {
@@ -32,7 +32,7 @@
 //
 //
 //        //  对消息中是否包含at露米娜的内容进行侦测
-//        luminaRequireSetup = luminaPrebuild.setLuminaAtRule(luminaRequireSetup, event.getRawMessage());
+//        luminaRequireSetup = luminaHelperPrebuild.setLuminaAtRule(luminaRequireSetup, event.getRawMessage());
 //
 //        //  消息状况报告
 //        System.out.println("=============================");
@@ -58,9 +58,9 @@
 ////
 //        boolean atDetectAndRequire = luminaRequireSetup.isRequireAtLumina() && luminaRequireSetup.isDetectAtLumina();
 //        boolean atNotDetect = !luminaRequireSetup.isDetectAtLumina();
-//        boolean matchedKeyword = luminaDetectHelper.checkDetectMainKeyword(event.getRawMessage(), luminaRequireSetup.getMasterKeyword(), luminaRequireSetup.getSecondKeyword(), luminaRequireSetup.isRequireKeywordMatch());
+//        boolean matchedKeyword = luminaHelperDetectUtil.checkDetectMainKeyword(event.getRawMessage(), luminaRequireSetup.getMasterKeyword(), luminaRequireSetup.getSecondKeyword(), luminaRequireSetup.isRequireKeywordMatch());
 //        //  测试区 测试完需删除
-//        boolean otherKeywordListMatched = luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList());
+//        boolean otherKeywordListMatched = luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList());
 //
 //        System.out.println("Master和Second其中一个匹配？" + (matchedKeyword ? "是" : "否"));
 //        System.out.println("OtherKeyword其中一个匹配？" + (otherKeywordListMatched ? "是" : "否"));
@@ -71,16 +71,16 @@
 //
 //
 //        Msg msg_running;
-//        if(luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())) {
+//        if(luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())) {
 ////            msg_running = Msg.builder()
 ////                    .reply(event.getMessageId())
 ////                    .text(listText.get(0));
-//            bot.sendGroupMsg(event.getGroupId(), luminaCourier.buildBasicReplyMessage(event, listText), false);
-//        } else if(!luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())){
+//            bot.sendGroupMsg(event.getGroupId(), luminaSenderCourier.buildBasicReplyMessage(event, listText), false);
+//        } else if(!luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())){
 ////            msg_running = Msg.builder()
 ////                    .at(event.getUserId())
 ////                    .text(listText.get(0));
-//            bot.sendGroupMsg(event.getGroupId(), luminaCourier.buildBasicAtUserMessage(event, listText), false);
+//            bot.sendGroupMsg(event.getGroupId(), luminaSenderCourier.buildBasicAtUserMessage(event, listText), false);
 //        }
 ////        bot.sendGroupMsg(event.getGroupId(), Msg.builder().reply(event.getMessageId()).text("lumina-factory-test"), false);
 //    }
@@ -97,7 +97,7 @@
 //
 //
 //        //  对消息中是否包含at露米娜的内容进行侦测
-//        luminaRequireSetup = luminaPrebuild.setLuminaAtRule(luminaRequireSetup, event.getRawMessage());
+//        luminaRequireSetup = luminaHelperPrebuild.setLuminaAtRule(luminaRequireSetup, event.getRawMessage());
 //
 //        //  消息状况报告
 //        System.out.println("=============================");
@@ -128,13 +128,13 @@
 ////
 //        boolean atDetectAndRequire = luminaRequireSetup.isRequireAtLumina() && luminaRequireSetup.isDetectAtLumina();
 //        boolean atNotDetect = !luminaRequireSetup.isDetectAtLumina();
-//        boolean matchedKeyword = luminaDetectHelper.checkDetectMainKeyword(event.getRawMessage(), luminaRequireSetup.getMasterKeyword(), luminaRequireSetup.getSecondKeyword(), luminaRequireSetup.isRequireKeywordMatch());
+//        boolean matchedKeyword = luminaHelperDetectUtil.checkDetectMainKeyword(event.getRawMessage(), luminaRequireSetup.getMasterKeyword(), luminaRequireSetup.getSecondKeyword(), luminaRequireSetup.isRequireKeywordMatch());
 //
 //        System.out.println("Master和Second其中一个匹配？" + (matchedKeyword ? "是" : "否"));
 //
 //        //  测试区 测试完需删除
 //        if(luminaRequireSetup.getOtherKeywordList() != null) {
-//            boolean otherKeywordListMatched = luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList());
+//            boolean otherKeywordListMatched = luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList());
 //            System.out.println("OtherKeyword其中一个匹配？" + (otherKeywordListMatched ? "是" : "否"));
 //        }
 //
@@ -142,15 +142,15 @@
 //
 //        if(luminaRequireSetup.getOtherKeywordList() == null) {
 //            if(luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword) {
-//                bot.sendGroupMsg(event.getGroupId(), luminaCourier.buildMultiReplyPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
-//            } else if(!luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())){
-//                bot.sendGroupMsg(event.getGroupId(), luminaCourier.buildMultiAtUserPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
+//                bot.sendGroupMsg(event.getGroupId(), luminaSenderCourier.buildMultiReplyPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
+//            } else if(!luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())){
+//                bot.sendGroupMsg(event.getGroupId(), luminaSenderCourier.buildMultiAtUserPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
 //            }
 //        }else {
-//            if(luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())) {
-//                bot.sendGroupMsg(event.getGroupId(), luminaCourier.buildMultiReplyPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
-//            } else if(!luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaDetectHelper.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())){
-//                bot.sendGroupMsg(event.getGroupId(), luminaCourier.buildMultiAtUserPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
+//            if(luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())) {
+//                bot.sendGroupMsg(event.getGroupId(), luminaSenderCourier.buildMultiReplyPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
+//            } else if(!luminaRequireSetup.isRequireRespReply() && atNotDetect && matchedKeyword && luminaHelperDetectUtil.checkDetectOtherKeywordList(event.getRawMessage(), luminaRequireSetup.getOtherKeywordList())){
+//                bot.sendGroupMsg(event.getGroupId(), luminaSenderCourier.buildMultiAtUserPairMessage(event, luminaRequireSetup.getHybridRespondMap()), false);
 //            }
 //        }
 //

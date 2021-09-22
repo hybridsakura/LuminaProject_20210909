@@ -1,6 +1,6 @@
 package com.hybridsakura.project.plugins;
 
-import com.hybridsakura.project.app.luminabot.helper.LuminaPluginHelper;
+import com.hybridsakura.project.app.luminabot.helper.LuminaSender_LuminaRobot;
 import com.hybridsakura.project.app.minecraft.entity.FlexibleParams;
 import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinate;
 import com.hybridsakura.project.app.minecraft.function.LuminaEngine;
@@ -23,7 +23,7 @@ import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
 @Component
 public class GroupPlugin_Minecraft extends BotPlugin {
 
-    LuminaPluginHelper pluginHelper = new LuminaPluginHelper();
+    LuminaSender_LuminaRobot pluginHelper = new LuminaSender_LuminaRobot();
     LuminaEngine luminaEngine = new LuminaEngine();
 
     @Override

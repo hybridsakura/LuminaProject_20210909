@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class LuminaGacha {
+public class BotApp_Gacha {
 
     public List<String> gachaResultGen() {
 

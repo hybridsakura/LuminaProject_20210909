@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ProfileHelper {
+public class LuminaHelper_Profile {
 
     //  获取表格格式化的Workbook
     public XSSFWorkbook getWorkbookByFilepath(String filepath) {

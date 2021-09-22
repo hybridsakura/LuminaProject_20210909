@@ -1,9 +1,9 @@
 package com.hybridsakura.project.plugins;
 
-import com.hybridsakura.project.app.luminabot.helper.LuminaPrebuild;
+import com.hybridsakura.project.app.luminabot.helper.LuminaHelper_Prebuild;
 import net.lz1998.pbbot.bot.Bot;
 import net.lz1998.pbbot.bot.BotPlugin;
-import com.hybridsakura.project.app.luminabot.helper.LuminaPluginHelper;
+import com.hybridsakura.project.app.luminabot.helper.LuminaSender_LuminaRobot;
 import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup;
 import onebot.OnebotEvent;
 import org.jetbrains.annotations.NotNull;
@@ -18,8 +18,8 @@ import java.util.Map;
 @Component
 public class GroupPlugin_LuminaOrder extends BotPlugin {
 
-    LuminaPluginHelper pluginHelper = new LuminaPluginHelper();
-    LuminaPrebuild luminaPrebuild = new LuminaPrebuild();
+    LuminaSender_LuminaRobot pluginHelper = new LuminaSender_LuminaRobot();
+    LuminaHelper_Prebuild luminaHelperPrebuild = new LuminaHelper_Prebuild();
 
     @Override
     public int onGroupMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event) {

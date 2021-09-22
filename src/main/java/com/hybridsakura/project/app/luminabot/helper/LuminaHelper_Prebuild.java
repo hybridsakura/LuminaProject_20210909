@@ -2,12 +2,14 @@ package com.hybridsakura.project.app.luminabot.helper;
 
 import com.hybridsakura.project.app.luminabot.entity.OrderSetup;
 import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup;
+import net.lz1998.pbbot.utils.Msg;
+import onebot.OnebotEvent;
 import org.jetbrains.annotations.NotNull;
 
 import static com.hybridsakura.project.common.LuminaCommon.LUMINA_KEYWORD;
 
 
-public class LuminaPrebuild {
+public class LuminaHelper_Prebuild {
 
     public LuminaRequireSetup setLuminaAtRule(LuminaRequireSetup requireSetup, String rawMessage) {
 
@@ -56,6 +58,28 @@ public class LuminaPrebuild {
             System.out.println("simplyRequireSetupGetOrder 返回为Null");
             return null;
         }
+    }
+
+    //  根据setup来确定此次应答使用怎样的Msg（普通消息、回复形式、艾特形式）
+    public static Msg setMsgByRule(@NotNull OnebotEvent.GroupMessageEvent event, @NotNull LuminaRequireSetup requireSetup) {
+
+        Msg msg = Msg.builder();
+
+        if(requireSetup.isRequireRespAt() && !requireSetup.isRequireRespReply()) {
+            //  对消息的发出者进行艾特
+            msg.at(event.getUserId());
+            return msg;
+        } else if(requireSetup.isRequireRespReply() && !requireSetup.isRequireRespAt()) {
+            //  对消息的本身进行回复
+            msg.reply(event.getMessageId());
+            return msg;
+        } else if(!requireSetup.isRequireRespAt() && !requireSetup.isRequireRespReply()) {
+            //  说明只需要发送普通消息
+            return msg;
+        } else {
+            return null;
+        }
+
     }
 
 

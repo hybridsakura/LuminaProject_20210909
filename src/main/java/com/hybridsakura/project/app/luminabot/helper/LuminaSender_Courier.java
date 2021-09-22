@@ -12,7 +12,7 @@ import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
 
 
 @SuppressWarnings("DuplicatedCode")
-public class LuminaCourier {
+public class LuminaSender_Courier {
 
     //  通过上层传输的MSG直接追加构造，再传出
     public Msg buildBasicMessage(@NotNull Msg msg, @NotNull List<String> textList) {
