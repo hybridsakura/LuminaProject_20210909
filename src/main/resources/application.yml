@@ -1,18 +1,20 @@
 spring:
   bot:
-    plugin-list: # ?????????????????0????????????????1?????????
-      - com.hybridsakura.project.plugins.LogPlugin # ????
-#      - net.lz1998.pbbot.plugin.DemoPlugin # ????
-#      - net.lz1998.pbbot.plugin.Demo2Plugin # ????
-      - com.hybridsakura.project.plugins.MiyakoPrivatePlugin # ????
-      - com.hybridsakura.project.plugins.MiyakoGroupPlugin # ????
-      - com.hybridsakura.project.plugins.LuminaGroupPlugin # ????
-      - com.hybridsakura.project.plugins.LuminaOrderPlugin # ????
-      - com.hybridsakura.project.plugins.MinecraftGroupPlugin
-#      - net.lz1998.pbbot.plugin.ImagePlugin # ????????
-#      - net.lz1998.pbbot.plugin.HelloPlugin # ????
+    plugin-list:
+      # [BotPlugin]对应[私聊消息&群聊消息]插件
+      - com.hybridsakura.project.plugins.BotPlugin_Log # 日志插件
+      # [PrivatePlugin]对应[私聊消息]插件
+      - com.hybridsakura.project.plugins.PrivatePlugin_MiyakoTest # 喵都测试 - 私聊版
+      # [GroupPlugin]对应[群聊消息]插件
+#      - com.hybridsakura.project.plugins.GroupPlugin_MiyakoTest # 喵都测试 - 群聊版
+#      - com.hybridsakura.project.plugins.GroupPlugin_LuminaMain # Lumina主要功能（差不多了？）
+#      - com.hybridsakura.project.plugins.GroupPlugin_LuminaOrder # Lumina指令系统（在建）
+#      - com.hybridsakura.project.plugins.GroupPlugin_Minecraft # MC建造指令生成器
+      - com.hybridsakura.project.plugins.GroupPlugin_SpecificRespond
+
 
 server:
+  # 端口号更改可能会导致lorca版无法连接到机器人
   port: 8081
 
 logging:
