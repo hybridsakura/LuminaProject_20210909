@@ -26,16 +26,17 @@ public class LuminaSender_DragonCounter {
         Long userIdBox = event.getUserId();
         Long groupIdBox = event.getGroupId();
         //  定义龙王所在群聊
-        Long dragonUerID = 1317274709L;
-//        Long dragonUerID = 179223207L;
-        Long dragonGroupID = 1036113904L;
+//        Long dragonUerID = 1317274709L;
+//        Long dragonGroupID = 1036113904L;
+        Long dragonUerID = 179223207L;
+        Long dragonGroupID = 768610859L;
         boolean isDragonDetect = userIdBox.equals(dragonUerID) && groupIdBox.equals(dragonGroupID);
 
         System.out.println("侦测到龙王发言： "+ (isDragonDetect ? "是" : "否"));
 
 
         if(isDragonDetect) {
-            courierX.sendSingleTextMessage(bot, event, luminaRequireSetup);
+            courierX.sendMultiTextMessages(bot, event, luminaRequireSetup);
         }
 
 //        if(luminaRequireSetup.getHybridRespondMap() != null) {
