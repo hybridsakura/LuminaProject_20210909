@@ -44,11 +44,11 @@ public class GroupPlugin_SpecificRespond extends BotPlugin {
         dragonCounter.setRequireRespAt(false);
         dragonCounter.setRequireRespReply(false);
         //  构造回复信息
-        dragonCounter_TextList4Map.add("[LuminaBot-云妹模块]已激活 侦测到云妹在水群");
-        dragonCounter_TextList4Map.add("云妹今天学习了吗？云妹今天锻炼了吗？");
-        dragonCounter_TextList4Map.add("云妹！Fight！云妹！Fight！");
-        dragonCounter_TextList4Map.add("云妹，心音机器人提醒您：\n 明日复明日，明日何其多，我生待明日，万事成蹉跎！");
-        dragonCounter_TextList4Map.add("云妹别水群了，快去努力学努力练！");
+        dragonCounter_TextList4Map.add("[LuminaBot-龙王反制模块] \n侦测到美羽在水群");
+//        dragonCounter_TextList4Map.add("云妹今天学习了吗？云妹今天锻炼了吗？");
+//        dragonCounter_TextList4Map.add("云妹！Fight！云妹！Fight！");
+        dragonCounter_TextList4Map.add("美羽同学，心音机器人提醒您：\n 你的旅行计划做完了没？\n 没有的话就快去做计划！");
+//        dragonCounter_TextList4Map.add("云妹别水群了，快去努力学努力练！");
 //        dragonCounter_ImageList4Map.add("/image/1");
         dragonCounter_HybridMessageMap.put(RETURN_TEXT, dragonCounter_TextList4Map);
         dragonCounter_HybridMessageMap.put(RETURN_IMAGE, dragonCounter_ImageList4Map);

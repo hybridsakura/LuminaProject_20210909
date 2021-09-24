@@ -19,9 +19,9 @@ public class LuminaSender_DragonCounter {
     public void sendCounterMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event, LuminaRequireSetup luminaRequireSetup) {
 
         //  获取群号
-        System.out.println("龙王反制模块 [AI-LM][UserID/用户QQ号] " + event.getUserId());
-        System.out.println("龙王反制模块 [AI-LM][GroupID/QQ群号] " + event.getGroupId());
-        System.out.println("龙王反制模块 [AI-LM][RawMessage/原始消息] " + event.getRawMessage());
+//        System.out.println("龙王反制模块 [AI-LM][UserID/用户QQ号] " + event.getUserId());
+//        System.out.println("龙王反制模块 [AI-LM][GroupID/QQ群号] " + event.getGroupId());
+//        System.out.println("龙王反制模块 [AI-LM][RawMessage/原始消息] " + event.getRawMessage());
         //  装箱操作
         Long userIdBox = event.getUserId();
         Long groupIdBox = event.getGroupId();
