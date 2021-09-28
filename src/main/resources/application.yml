@@ -9,8 +9,8 @@ spring:
 #      - com.hybridsakura.project.plugins.GroupPlugin_MiyakoTest # 喵都测试 - 群聊版
 #      - com.hybridsakura.project.plugins.GroupPlugin_LuminaMain # Lumina主要功能（差不多了？）
 #      - com.hybridsakura.project.plugins.GroupPlugin_LuminaOrder # Lumina指令系统（在建）
-#      - com.hybridsakura.project.plugins.GroupPlugin_Minecraft # MC建造指令生成器
-      - com.hybridsakura.project.plugins.GroupPlugin_SpecificRespond
+      - com.hybridsakura.project.plugins.GroupPlugin_Minecraft # MC建造指令生成器
+#      - com.hybridsakura.project.plugins.GroupPlugin_SpecificRespond
 
 
 server:

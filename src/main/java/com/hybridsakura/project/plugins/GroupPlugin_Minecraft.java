@@ -1,13 +1,16 @@
 package com.hybridsakura.project.plugins;
 
+import com.hybridsakura.project.app.luminabot.helper.LuminaSender_CourierX;
 import com.hybridsakura.project.app.luminabot.helper.LuminaSender_LuminaRobot;
 import com.hybridsakura.project.app.minecraft.entity.FlexibleParams;
 import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinate;
 import com.hybridsakura.project.app.minecraft.function.LuminaEngine;
+import com.hybridsakura.project.app.minecraft.helper.BotHelper_Minecraft;
 import net.lz1998.pbbot.bot.Bot;
 import net.lz1998.pbbot.bot.BotPlugin;
 import com.hybridsakura.project.app.luminabot.entity.LuminaRequireSetup;
 import onebot.OnebotEvent;
+import org.apache.pdfbox.pdmodel.common.COSArrayList;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +27,8 @@ import static com.hybridsakura.project.common.LuminaCommon.RETURN_TEXT;
 public class GroupPlugin_Minecraft extends BotPlugin {
 
     LuminaSender_LuminaRobot pluginHelper = new LuminaSender_LuminaRobot();
-    LuminaEngine luminaEngine = new LuminaEngine();
+    BotHelper_Minecraft minecraft = new BotHelper_Minecraft();
+    LuminaSender_CourierX courierX = new LuminaSender_CourierX();
 
     @Override
     public int onGroupMessage(@NotNull Bot bot, @NotNull OnebotEvent.GroupMessageEvent event) {
@@ -34,35 +38,32 @@ public class GroupPlugin_Minecraft extends BotPlugin {
         List<String> otherKeyword_MinecraftTest = new ArrayList<>();
         Map<String, List<String>> hybridMessageMap_MinecraftTest = new HashMap<>();
         //  文字表 回复哪些内容，一行文字站一个下标
-        List<String> loadedReturnText_MinecraftTest = new ArrayList<>();
         //  图片地址表 回复的图片有哪些，一张图片占用一个下标
         List<String> loadedReturnImage_MinecraftTest = new ArrayList<>();
         //  构造关键字匹配
-        lumina_MinecraftTest.setMasterKeyword("心音");
+        lumina_MinecraftTest.setMasterKeyword("MCGEN");
         lumina_MinecraftTest.setRequireKeywordMatch(false);
-        lumina_MinecraftTest.setSecondKeyword(" MC代码生成测试 ");
+//        lumina_MinecraftTest.setSecondKeyword("  ");
 //        otherKeyword_MinecraftTest.add("");
         //  是否需要检测艾特露米娜
-        lumina_MinecraftTest.setRequireAtLumina(false);
+        lumina_MinecraftTest.setRequireAtLumina(true);
         //  需要以艾特回复对方吗/需要使用回复框回复对方吗
         lumina_MinecraftTest.setRequireRespAt(false);
-        lumina_MinecraftTest.setRequireRespReply(true);
+        lumina_MinecraftTest.setRequireRespReply(false);
 
-        MinecraftCoordinate coordinate5 = new MinecraftCoordinate(-150, 76, -433);
-        FlexibleParams flexibleParams_4 = new FlexibleParams();
-        flexibleParams_4.setSequenceName("[lumina-basics]");
-        luminaEngine.LuminaMasterSequence(null, coordinate5, flexibleParams_4);
+        List<String> orderList = new ArrayList<>();
+        orderList = minecraft.analyseString(event.getRawMessage());
 
         //  构造回复信息
-        loadedReturnText_MinecraftTest.add("喵喵喵？");
-        loadedReturnText_MinecraftTest.add("已执行，请查看控制台");
+//        System.out.println(orderList);
+        List<String> loadedReturnText_MinecraftTest = new ArrayList<>(orderList);
         hybridMessageMap_MinecraftTest.put(RETURN_TEXT, loadedReturnText_MinecraftTest);
         hybridMessageMap_MinecraftTest.put(RETURN_IMAGE, loadedReturnImage_MinecraftTest);
         //  构造的参数包装统一设定
         lumina_MinecraftTest.setOtherKeywordList(otherKeyword_MinecraftTest);
         lumina_MinecraftTest.setHybridRespondMap(hybridMessageMap_MinecraftTest);
         //  调用方法发送消息
-        pluginHelper.sendBasicMessage(bot, event, lumina_MinecraftTest);
+        courierX.sendTextMessages(bot, event, lumina_MinecraftTest);
 
 
 
