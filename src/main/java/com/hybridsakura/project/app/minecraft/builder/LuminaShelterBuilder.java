@@ -4,11 +4,13 @@ import com.hybridsakura.project.app.minecraft.entity.FlexibleParams;
 import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinate;
 import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinatePair;
 
+import java.util.List;
+
 public class LuminaShelterBuilder {
 
     //  Lumina 遮蔽所建造者
-    public void lumina_InitShelterBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
-
+    public List<String> lumina_InitShelterBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
+        return null;
     }
 
 }

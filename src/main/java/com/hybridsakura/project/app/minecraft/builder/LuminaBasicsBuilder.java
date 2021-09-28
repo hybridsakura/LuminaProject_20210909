@@ -5,6 +5,9 @@ import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinate;
 import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinatePair;
 import com.hybridsakura.project.app.minecraft.helper.LuminaHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LuminaBasicsBuilder {
 
     //  基础建筑物快速生成
@@ -14,14 +17,14 @@ public class LuminaBasicsBuilder {
 
     LuminaHelper luminaHelper = new LuminaHelper();
 
-    public void lumina_InitBasicsBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
+    public List<String> lumina_InitBasicsBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
 
         LuminaBasicsBuilder luminaBasicsBuilder = new LuminaBasicsBuilder();
-        luminaBasicsBuilder.BasicMiningBuild(coordinate);
+        return luminaBasicsBuilder.BasicMiningBuild(coordinate);
 
     }
 
-    public void BasicMiningBuild(MinecraftCoordinate coordinate) {
+    public List<String> BasicMiningBuild(MinecraftCoordinate coordinate) {
 
         int radius = 4, depth = 60, height = 12;
         //  制造挖矿竖井
@@ -41,10 +44,14 @@ public class LuminaBasicsBuilder {
             outer_coordinateStart.setY(coordinate.getY() - depth);
             inner_coordinateStart.setY(coordinate.getY() - depth + 1);
         }
+        List<String> orderList = new ArrayList<>();
 
         System.out.println("/fill" + luminaHelper.coordinateOrderCodeFormatter(new MinecraftCoordinatePair(outer_coordinateStart, outer_coordinateEnd)) + "iron_block");
         System.out.println("/fill" + luminaHelper.coordinateOrderCodeFormatter(new MinecraftCoordinatePair(inner_coordinateStart, inner_coordinateEnd)) + "air");
 
+        orderList.add("/fill" + luminaHelper.coordinateOrderCodeFormatter(new MinecraftCoordinatePair(outer_coordinateStart, outer_coordinateEnd)) + "iron_block");
+        orderList.add("/fill" + luminaHelper.coordinateOrderCodeFormatter(new MinecraftCoordinatePair(inner_coordinateStart, inner_coordinateEnd)) + "air");
+        return orderList;
     }
 
 

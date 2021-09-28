@@ -7,21 +7,29 @@ import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinatePair;
 import com.hybridsakura.project.app.minecraft.function.LuminaFunction;
 import com.hybridsakura.project.app.minecraft.helper.LuminaHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LuminaBridgeBuilder {
 
     //  Lumina 桥梁建造者
 
     LuminaHelper luminaHelper = new LuminaHelper();
 
-    public void lumina_InitBridgeBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
+    public List<String> lumina_InitBridgeBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
 
+        List<String> orderList = new ArrayList<>();
         LuminaFunction luminaFunction = new LuminaFunction();
+
         //  获取起终点坐标
         MinecraftCoordinatePair tempCoordinatePair;
 
         tempCoordinatePair = luminaFunction.luminaFinalBridgeBuild(coordinatePair.getMinecraftCoordinate1(), luminaHelper.coordinateAxisJudgement(coordinatePair), params[0].getWidth(), luminaHelper.coordinateLengthHelper(coordinatePair));
 
         System.out.println("/fill" + luminaHelper.coordinateOrderCodeFormatter(tempCoordinatePair) + "iron_block");
+
+        orderList.add("/fill" + luminaHelper.coordinateOrderCodeFormatter(tempCoordinatePair) + "iron_block");
+        return orderList;
     }
 
 //    public String Lumina_BuildBridgeSeq(MinecraftCoordinatePair coordinatePair) {
