@@ -32,17 +32,19 @@ public class LuminaSender_DragonCounter {
         Long dragonUerID_YM = 1317274709L;
         Long dragonGroupID_YM_1 = 1036113904L;
         Long dragonGroupID_YM_2 = 698146016L;
-        Long dragonUerID_MY = 2792556795L;
+        Long dragonUerID_MY = 179223207L;
         Long dragonGroupID_MY_1 = 768610859L;
         Long dragonGroupID_MY_2 = 1036113904L;
+        Long dragonGroupID_MY_3 = 556136295L;
         boolean isDragonDetect_YM_1 = userIdBox.equals(dragonUerID_YM) && groupIdBox.equals(dragonGroupID_YM_1);
         boolean isDragonDetect_YM_2 = userIdBox.equals(dragonUerID_YM) && groupIdBox.equals(dragonGroupID_YM_2);
         boolean isDragonDetect_MY_1 = userIdBox.equals(dragonUerID_MY) && groupIdBox.equals(dragonGroupID_MY_1);
         boolean isDragonDetect_MY_2 = userIdBox.equals(dragonUerID_MY) && groupIdBox.equals(dragonGroupID_MY_2);
+        boolean isDragonDetect_MY_3 = userIdBox.equals(dragonUerID_MY) && groupIdBox.equals(dragonGroupID_MY_3);
 
         System.out.println("侦测到[云妹]发言1： "+ (isDragonDetect_YM_1 ? "是" : "否"));
         System.out.println("侦测到[云妹]发言2： "+ (isDragonDetect_YM_2 ? "是" : "否"));
-//        System.out.println("侦测到[美羽]发言： "+ (isDragonDetect_MY ? "是" : "否"));
+        System.out.println("侦测到[美羽]发言： "+ (isDragonDetect_MY_3 ? "是" : "否"));
 
 //        if(isDragonDetect_YM) {
 //            luminaRequireSetup = new LuminaRequireSetup();
@@ -76,7 +78,7 @@ public class LuminaSender_DragonCounter {
             courierX.sendMultiTextMessages(bot, event, luminaRequireSetup_temp1);
         }
 
-        if(isDragonDetect_MY_1 || isDragonDetect_MY_2) {
+        if(isDragonDetect_MY_3) {
             courierX.sendMultiTextMessages(bot, event, luminaRequireSetup);
         }
 

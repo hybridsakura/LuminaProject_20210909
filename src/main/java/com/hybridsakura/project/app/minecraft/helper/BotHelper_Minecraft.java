@@ -18,68 +18,86 @@ public class BotHelper_Minecraft {
 
     LuminaEngine luminaEngine = new LuminaEngine();
 
-    public List<String> analyseString(String order) {
+    public List<String> analyseString(String order, Boolean at) {
         //  分析传入参数，把字符串分析出三个部分
         //  [Coordinate1],[Coordinate2 or radius],[sequenceName],[blockName]
         //
 //        String testString = "MCG [100,65,100] [3] [lumina-beacon]";
+
+        //  检测是否符合要求
+        //  1.数组长度必须为4或5 2.包含认证参数MCG 3.要求确认at(可选)
+
         List<String> partList = Arrays.asList(order.split(" "));
 
-        String seqName = "";
-        String seqMode = "";
-        MinecraftCoordinate coordinate1 = new MinecraftCoordinate();
-        MinecraftCoordinate coordinate2 = new MinecraftCoordinate();
-        int radius = 0;
-        List<String> seqList = new ArrayList<String>();
-        if(partList.size() == 4) {
-            seqName = partList.get(0);
-            seqMode = partList.get(3);
+        boolean qualifiedListLength = partList.size() == 4 || partList.size() == 5;
+        boolean qualifiedRouteKeyword = order.contains("MCG");
+        boolean qualifiedAtLumina = at;
 
-            Pattern pattern = Pattern.compile("(\\[[^\\]]*\\])");
-            Matcher matcher = pattern.matcher(order);
-            while (matcher.find()) {
-                seqList.add(matcher.group().substring(1, matcher.group().length()-1));
+        if(qualifiedListLength && qualifiedRouteKeyword && qualifiedAtLumina) {
+            String seqName = "";
+            MinecraftCoordinate coordinate1 = new MinecraftCoordinate();
+            MinecraftCoordinate coordinate2 = new MinecraftCoordinate();
+            int radius = 0;
+            List<String> seqList = new ArrayList<String>();
+            System.out.println("已确认到激活的序列名: " + partList.get(0));
+            if(partList.size() == 4) {
+                seqName = partList.get(3);
+                Pattern pattern = Pattern.compile("(\\[[^\\]]*\\])");
+                Matcher matcher = pattern.matcher(order);
+                while (matcher.find()) {
+                    seqList.add(matcher.group().substring(1, matcher.group().length()-1));
+                }
+                if(seqList.get(0).contains(",")) {
+                    coordinate1 = getCoordinateFromString(seqList.get(0));
+                }
+                if(seqList.get(1).contains(",")) {
+                    coordinate2 = getCoordinateFromString(seqList.get(1));
+                } else {
+                    radius = Integer.parseInt(seqList.get(1));
+                }
+            } else if(partList.size() == 5) {
+                seqName = partList.get(4);
+                Pattern pattern = Pattern.compile("(\\[[^\\]]*\\])");
+                Matcher matcher = pattern.matcher(order);
+                while (matcher.find()) {
+                    seqList.add(matcher.group().substring(1, matcher.group().length()-1));
+                }
+                if(seqList.get(0).contains(",")) {
+                    coordinate1 = getCoordinateFromString(seqList.get(0));
+                }
+                if(seqList.get(1).contains(",")) {
+                    coordinate2 = getCoordinateFromString(seqList.get(1));
+                } else {
+                    radius = Integer.parseInt(seqList.get(1));
+                }
+                if(seqList.size() == 4 && seqList.get(1).contains(",")) {
+                    System.out.println("！");
+                    radius = Integer.parseInt(seqList.get(2));
+                }else{
+                    System.out.println("????????");
+                }
             }
 
-            if(seqList.get(0).contains(",")) {
-                coordinate1 = getCoordinateFromString(seqList.get(0));
-            }
-            if(seqList.get(1).contains(",")) {
-                coordinate2 = getCoordinateFromString(seqList.get(1));
+            FlexibleParams params = new FlexibleParams();
+            params.setSequenceName(seqName);
+            params.setWidth(radius);
+            //  确定如何构造调用方法
+            //  1.只有一个坐标 2.有一个坐标和半径 3.有两个坐标 4.有两个坐标和1个厚度
+            if(coordinate1 != null && coordinate2 == null) {
+                //  1.只有一个坐标
+                return luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(), coordinate1, params);
+            } else if(coordinate1 != null && radius != 0) {
+                //  2.有一个坐标和半径
+                return luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(), coordinate1, params);
+            } else if(coordinate1 != null) {
+                //  3.有两个坐标
+                return luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(coordinate1, coordinate2), new MinecraftCoordinate(), params);
             } else {
-                radius = Integer.parseInt(seqList.get(1));
+                return null;
             }
-        } else if(partList.size() == 5) {
-            seqName = partList.get(1);
-            seqMode = partList.get(4);
-
-            Pattern pattern = Pattern.compile("(\\[[^\\]]*\\])");
-            Matcher matcher = pattern.matcher(order);
-            while (matcher.find()) {
-                seqList.add(matcher.group().substring(1, matcher.group().length()-1));
-            }
-
-            if(seqList.get(0).contains(",")) {
-                coordinate1 = getCoordinateFromString(seqList.get(0));
-            }
-            if(seqList.get(1).contains(",")) {
-                coordinate2 = getCoordinateFromString(seqList.get(1));
-            } else {
-                radius = Integer.parseInt(seqList.get(1));
-            }
+        } else {
+            return null;
         }
-
-        System.out.println("");
-
-        FlexibleParams params = new FlexibleParams();
-        params.setSequenceName(seqMode);
-
-        return luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(), coordinate1, params);
-    }
-
-    public static void main(String[] args) {
-        BotHelper_Minecraft minecraft = new BotHelper_Minecraft();
-        minecraft.analyseString("");
     }
 
     public MinecraftCoordinate getCoordinateFromString(@NotNull String rawString) {
