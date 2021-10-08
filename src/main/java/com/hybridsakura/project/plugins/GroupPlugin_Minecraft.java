@@ -37,8 +37,8 @@ public class GroupPlugin_Minecraft extends BotPlugin {
         boolean requireAtLumina = true;
 
         List<String> orderList = new ArrayList<>();
-        if(minecraft.analyseString(event.getRawMessage(), requireAtLumina) != null) {
-            orderList = minecraft.analyseString(event.getRawMessage(), requireAtLumina);
+        if(minecraft.analyseStringX(event.getRawMessage(), requireAtLumina) != null) {
+            orderList = minecraft.analyseStringX(event.getRawMessage(), requireAtLumina);
 
             //  [0 S0_2109060950]
             LuminaRequireSetup lumina_MinecraftTest = new LuminaRequireSetup();
@@ -48,7 +48,7 @@ public class GroupPlugin_Minecraft extends BotPlugin {
             //  图片地址表 回复的图片有哪些，一张图片占用一个下标
             List<String> loadedReturnImage_MinecraftTest = new ArrayList<>();
             //  构造关键字匹配
-            lumina_MinecraftTest.setMasterKeyword("MCGEN");
+            lumina_MinecraftTest.setMasterKeyword("坐标处理");
             lumina_MinecraftTest.setRequireKeywordMatch(false);
 //        lumina_MinecraftTest.setSecondKeyword("  ");
 //        otherKeyword_MinecraftTest.add("");

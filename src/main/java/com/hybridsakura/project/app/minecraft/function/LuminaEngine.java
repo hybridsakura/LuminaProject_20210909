@@ -7,6 +7,8 @@ import com.hybridsakura.project.app.minecraft.entity.MinecraftCoordinatePair;
 
 import java.util.List;
 
+import static com.hybridsakura.project.common.LuminaCommon.*;
+
 public class LuminaEngine {
 
     public List<String> LuminaMasterSequence(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
@@ -16,19 +18,19 @@ public class LuminaEngine {
             sequenceName = params[0].getSequenceName();
             System.out.println("[AI-LM][] LuminaSystem 序列="+sequenceName+" 准备执行...");
             switch (sequenceName) {
-                case "[lumina-basics]":
+                case LUMINA_MINECRAFT_BSN_BASICS:
                     LuminaBasicsBuilder basicsBuilder = new LuminaBasicsBuilder();
                     return basicsBuilder.lumina_InitBasicsBuild(coordinatePair, coordinate ,params[0]);
-                case "[lumina-beacon]":
+                case LUMINA_MINECRAFT_BSN_BEACON:
                     LuminaBeaconBuilder beaconBuilder = new LuminaBeaconBuilder();
                     return beaconBuilder.lumina_InitBeaconBuild(coordinatePair, coordinate ,params[0]);
-                case "[lumina-bridge]":
+                case LUMINA_MINECRAFT_BSN_BRIDGE:
                     LuminaBridgeBuilder bridgeBuilder = new LuminaBridgeBuilder();
                     return bridgeBuilder.lumina_InitBridgeBuild(coordinatePair, coordinate ,params[0]);
-                case "[lumina-tunnel]":
+                case LUMINA_MINECRAFT_BSN_TUNNEL:
                     LuminaTunnelBuilder tunnelBuilder = new LuminaTunnelBuilder();
                     return tunnelBuilder.lumina_InitTunnelBuild(coordinatePair, coordinate ,params[0]);
-                case "[lumina-shelter]":
+                case LUMINA_MINECRAFT_BSN_SHELTER:
                     LuminaShelterBuilder shelterBuilder = new LuminaShelterBuilder();
                     return shelterBuilder.lumina_InitShelterBuild(coordinatePair, coordinate ,params[0]);
                 default:
