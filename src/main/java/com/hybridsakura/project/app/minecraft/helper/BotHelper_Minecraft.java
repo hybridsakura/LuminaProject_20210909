@@ -174,8 +174,6 @@ public class BotHelper_Minecraft {
                 returnList = luminaEngine.LuminaMasterSequence(null, coordinate1, params);
             }
 
-
-
             return returnList;
         } else {
             return null;

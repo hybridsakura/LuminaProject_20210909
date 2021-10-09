@@ -18,10 +18,11 @@ public class LuminaBeaconBuilder {
 
     //  输入一个坐标，按照坐标展开。展开数为
     public List<String> lumina_InitBeaconBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
-
-        LuminaBeaconBuilder luminaBeaconBuilder = new LuminaBeaconBuilder();
-        return luminaBeaconBuilder.beaconDeploy(coordinate);
-
+        if(coordinatePair == null && coordinate!=null) {
+            return beaconDeploy(coordinate);
+        } else {
+            return null;
+        }
     }
 
     private List<String> beaconDeploy(MinecraftCoordinate coordinate) {

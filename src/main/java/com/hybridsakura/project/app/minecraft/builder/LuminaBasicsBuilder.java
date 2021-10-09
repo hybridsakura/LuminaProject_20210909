@@ -18,13 +18,14 @@ public class LuminaBasicsBuilder {
     LuminaHelper luminaHelper = new LuminaHelper();
 
     public List<String> lumina_InitBasicsBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
-
-        LuminaBasicsBuilder luminaBasicsBuilder = new LuminaBasicsBuilder();
-        return luminaBasicsBuilder.BasicMiningBuild(coordinate);
-
+        if(coordinatePair == null && coordinate != null) {
+            return basicMiningBuild(coordinate);
+        } else {
+            return null;
+        }
     }
 
-    public List<String> BasicMiningBuild(MinecraftCoordinate coordinate) {
+    public List<String> basicMiningBuild(MinecraftCoordinate coordinate) {
 
         int radius = 4, depth = 60, height = 12;
         //  制造挖矿竖井

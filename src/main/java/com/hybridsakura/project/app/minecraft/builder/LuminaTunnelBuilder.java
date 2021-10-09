@@ -14,10 +14,13 @@ public class LuminaTunnelBuilder {
     LuminaHelper luminaHelper = new LuminaHelper();
 
     //  Lumina 隧道建造者
-
     public List<String> lumina_InitTunnelBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
-        LuminaTunnelBuilder tunnelBuilder = new LuminaTunnelBuilder();
-        return tunnelBuilder.deploySingleLineBaseTunnel(coordinatePair);
+
+        if(coordinatePair.getMinecraftCoordinate1() != null && coordinatePair.getMinecraftCoordinate2() != null) {
+            return deploySingleLineBaseTunnel(coordinatePair);
+        } else {
+            return null;
+        }
     }
 
     //  封闭方式：管道型、封闭型
