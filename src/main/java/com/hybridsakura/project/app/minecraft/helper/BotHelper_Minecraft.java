@@ -125,52 +125,56 @@ public class BotHelper_Minecraft {
             }
             String sequenceName = partList.get(4);
 
-            List<MinecraftCoordinate> matcherList = new ArrayList<MinecraftCoordinate>();
-            Pattern pattern = Pattern.compile("(\\[[^\\]]*\\])");
-            Matcher matcher = pattern.matcher(order);
+            List<MinecraftCoordinate> coordinatesList = new ArrayList<MinecraftCoordinate>();
+//            List<String> matcherTextList = new ArrayList<String>();
+
+            Pattern pattern_segment = Pattern.compile("(\\[[^\\]]*\\])");
+            String patternStr_numbers = "(^[0-9]*$)";
+            String patternStr_sequence = "(\\lumina-[A-Za-z]+$)";
+
+            Matcher matcher = pattern_segment.matcher(order);
 
             while (matcher.find()) {
                 //  首位都是中括号，只取中间部分
-                if(matcher.group() != null) {
-                    matcherList.add(getCoordinateFromString(matcher.group().substring(1, matcher.group().length()-1)));
+                //  原始消息
+                String matcherRawText = matcher.group();
+                //  经过 去头尾 的消息
+                String matcherContent = matcher.group().substring(1, matcher.group().length()-1);
+                System.out.println("matcherRawText: " + matcherRawText);
+                System.out.println("matcherContent: " + matcherContent);
+//                matcherTextList.add(matcherContent);
+                if(matcherContent.contains(",")) {
+                    coordinatesList.add(getCoordinateFromString(matcherContent));
+                }else if(Pattern.matches(patternStr_numbers, matcherContent)) {
+                    radius = Integer.parseInt(matcherContent);
+                    radiusChanged = true;
                 }
+            }
+
+            if(coordinatesList.size() >= 2) {
+                coordinate1 = coordinatesList.get(0);
+                coordinate2 = coordinatesList.get(1);
+            }else if(coordinatesList.size() == 1) {
+                coordinate1 = coordinatesList.get(0);
+                coordinate2 = null;
             }
 
             //  参数设置
             FlexibleParams params = new FlexibleParams();
             params.setSequenceName(sequenceName);
-            if(params.getWidth() != 0) {
+            if(radius != 0 && radiusChanged) {
                 params.setWidth(radius);
             }
 
             List<String> returnList = null;
 
-
-            if(matcherList.get(0) != null) {
-                coordinate1 = matcherList.get(0);
-            }else if(matcherList.get(1) != null) {
-                coordinate2 = matcherList.get(1);
-                coordinatePair = new MinecraftCoordinatePair(coordinate1, coordinate2);
+            if(coordinate1 != null && coordinate2 != null) {
+                returnList = luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(coordinate1, coordinate2), null, params);
+            } else if(coordinate1 != null) {
+                returnList = luminaEngine.LuminaMasterSequence(null, coordinate1, params);
             }
 
-            returnList = luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(coordinate1, coordinate2), new MinecraftCoordinate(), params);
 
-//            if(matcherList.size() >= 2) {
-//                //  1.启动双坐标处理模式
-//                coordinate1 = matcherList.get(0);
-//                coordinate2 = matcherList.get(1);
-//
-//                returnList = luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(coordinate1, coordinate2), new MinecraftCoordinate(), params);
-//            } else if(matcherList.size() == 1) {
-//                //  2.启动单坐标、且包含radius的处理模式
-//                if(params.getWidth() != 0) {
-//                    //  单坐标
-//                    returnList = luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(), coordinate1);
-//                } else {
-//                    //  单坐标和半径
-//                    returnList = luminaEngine.LuminaMasterSequence(new MinecraftCoordinatePair(), coordinate1, params);
-//                }
-//            }
 
             return returnList;
         } else {
