@@ -105,7 +105,7 @@ public class BotHelper_Minecraft {
         List<String> partList = Arrays.asList(order.split(" "));
         System.out.println("partList [size=" + partList.size() + "]");
 
-        boolean qualifiedSize = partList.size() == 4 || partList.size() == 5;
+        boolean qualifiedSize = partList.size() == 5 || partList.size() == 6;
         boolean qualifiedKeyword = order.contains("处理坐标") && ("处理坐标".equals(partList.get(0)) || "处理坐标".equals(partList.get(1)));
         boolean qualifiedSeqName = order.contains("lumina-");
         boolean qualifiedCondition = qualifiedSize && qualifiedKeyword && qualifiedSeqName;
@@ -123,17 +123,20 @@ public class BotHelper_Minecraft {
             if(!partList.get(3).contains(",")) {
                 radius = Integer.parseInt(partList.get(3).substring(1,partList.get(3).length()-1));
             }
-            String sequenceName = partList.get(4);
+
+
+
 
             List<MinecraftCoordinate> coordinatesList = new ArrayList<MinecraftCoordinate>();
 //            List<String> matcherTextList = new ArrayList<String>();
 
             Pattern pattern_segment = Pattern.compile("(\\[[^\\]]*\\])");
             String patternStr_numbers = "(^[0-9]*$)";
-            String patternStr_sequence = "(\\lumina-[A-Za-z]+$)";
+            String patternStr_sequence = "(lumina-[A-Za-z]+$)";
 
             Matcher matcher = pattern_segment.matcher(order);
 
+            String sequenceName = "";
             while (matcher.find()) {
                 //  首位都是中括号，只取中间部分
                 //  原始消息
@@ -148,16 +151,34 @@ public class BotHelper_Minecraft {
                 }else if(Pattern.matches(patternStr_numbers, matcherContent)) {
                     radius = Integer.parseInt(matcherContent);
                     radiusChanged = true;
+
+                }else if(Pattern.matches(patternStr_sequence, matcherContent)) {
+                    sequenceName = "[" + matcherContent + "]";
+
                 }
             }
 
-            if(coordinatesList.size() >= 2) {
-                coordinate1 = coordinatesList.get(0);
-                coordinate2 = coordinatesList.get(1);
-            }else if(coordinatesList.size() == 1) {
-                coordinate1 = coordinatesList.get(0);
-                coordinate2 = null;
+//            String sequenceName = partList.get(4);
+
+            switch (coordinatesList.size()) {
+                case 1:
+                    coordinate1 = coordinatesList.get(0);
+                    coordinate2 = null;
+                    break;
+                case 2:
+                    coordinate1 = coordinatesList.get(0);
+                    coordinate2 = coordinatesList.get(1);
+                    break;
             }
+
+//            if(coordinatesList.size() == 2) {
+//
+//            } else if(coordinatesList.size() == 3) {
+//                coordinate1 = coordinatesList.get(0);
+//                coordinate2 = null;
+//            } else if(coordinatesList.size() == 1) {
+//
+//            }
 
             //  参数设置
             FlexibleParams params = new FlexibleParams();

@@ -15,6 +15,10 @@ public class LuminaFunction {
 
     //  根据[原点坐标]和[展开方向]以及指定的[桥梁宽度]和[桥梁长度]，生成最终MC指令中要用的[坐标组]
     public MinecraftCoordinatePair luminaFinalBridgeBuild(MinecraftCoordinate locateCoordinate, String direction, int width, int length) {
+        if(width == 0) {
+            width = 2;
+            System.out.println("[AI-LM][HELP_INFO] 侦测到未对<width>进行定义或定义为0，露米娜已自动将<width>重设为2");
+        }
         MinecraftCoordinate coordinateStart, coordinateEnd;
         switch (direction) {
             case "X+":
