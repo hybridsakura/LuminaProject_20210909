@@ -17,7 +17,7 @@ public class LuminaTunnelBuilder {
     public List<String> lumina_InitTunnelBuild(MinecraftCoordinatePair coordinatePair, MinecraftCoordinate coordinate, FlexibleParams... params) {
 
         if(coordinatePair.getMinecraftCoordinate1() != null && coordinatePair.getMinecraftCoordinate2() != null) {
-            return deploySingleLineBaseTunnel(coordinatePair);
+            return deploySingleLineBaseTunnel(coordinatePair, params[0].getWidth());
         } else {
             return null;
         }
@@ -29,7 +29,7 @@ public class LuminaTunnelBuilder {
     //  1.确定展开点坐标 2.确定展开方向 3.确定展开距离 4.确定展开半径
     //                或将展开方向和距离结合，使用两个坐标点来确定（拟合【方向】和【距离】）
 
-    public List<String> deploySingleLineBaseTunnel(MinecraftCoordinatePair coordinatePair) {
+    public List<String> deploySingleLineBaseTunnel(MinecraftCoordinatePair coordinatePair, Integer radius) {
 
         List<String> orderList = new ArrayList<>();
 
@@ -37,12 +37,16 @@ public class LuminaTunnelBuilder {
         String direction = luminaHelper.coordinateAxisJudgement(coordinatePair);
         int length = luminaHelper.coordinateLengthHelper(coordinatePair);
 
+        if(radius < 4) {
+            radius = 4;
+        }
+
         //  获取起终点坐标
         MinecraftCoordinatePair tempCoordinatePair1, tempCoordinatePair2, tempCoordinatePair3, tempCoordinatePair4;
 
         LuminaFunction luminaFunction = new LuminaFunction();
-        tempCoordinatePair1 = luminaFunction.luminaFinalTunnelBuild(coordinatePair.getMinecraftCoordinate1(), direction, 4, length, "").get(0);
-        tempCoordinatePair2 = luminaFunction.luminaFinalTunnelBuild(coordinatePair.getMinecraftCoordinate1(), direction, 3, length, "").get(1);
+        tempCoordinatePair1 = luminaFunction.luminaFinalTunnelBuild(coordinatePair.getMinecraftCoordinate1(), direction, radius, length, "").get(0);
+        tempCoordinatePair2 = luminaFunction.luminaFinalTunnelBuild(coordinatePair.getMinecraftCoordinate1(), direction, radius - 1, length, "").get(1);
 //        tempCoordinatePair3 = luminaFunction.luminaFinalTunnelBuild(coordinatePair.getMinecraftCoordinate1(), direction, 2, length, "").get(2);
 //        tempCoordinatePair4 = luminaFunction.luminaFinalTunnelBuild(coordinatePair.getMinecraftCoordinate1(), direction, 2, length, "").get(3);
 
