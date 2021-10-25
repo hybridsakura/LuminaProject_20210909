@@ -19,20 +19,20 @@ public class LuminaEngine {
             System.out.println("[AI-LM][] LuminaSystem 序列="+sequenceName+" 准备执行...");
             switch (sequenceName) {
                 case LUMINA_MINECRAFT_BSN_BASICS:
-                    LuminaBasicsBuilder basicsBuilder = new LuminaBasicsBuilder();
-                    return basicsBuilder.lumina_InitBasicsBuild(coordinatePair, coordinate ,params[0]);
+//                    LuminaBasicsBuilder basicsBuilder = new LuminaBasicsBuilder();
+                    return new LuminaBasicsBuilder().lumina_InitBasicsBuild(coordinatePair, coordinate ,params[0]);
                 case LUMINA_MINECRAFT_BSN_BEACON:
-                    LuminaBeaconBuilder beaconBuilder = new LuminaBeaconBuilder();
-                    return beaconBuilder.lumina_InitBeaconBuild(coordinatePair, coordinate ,params[0]);
+//                    LuminaBeaconBuilder beaconBuilder = new LuminaBeaconBuilder();
+                    return new LuminaBeaconBuilder().lumina_InitBeaconBuild(coordinatePair, coordinate ,params[0]);
                 case LUMINA_MINECRAFT_BSN_BRIDGE:
-                    LuminaBridgeBuilder bridgeBuilder = new LuminaBridgeBuilder();
-                    return bridgeBuilder.lumina_InitBridgeBuild(coordinatePair, coordinate ,params[0]);
+//                    LuminaBridgeBuilder bridgeBuilder = new LuminaBridgeBuilder();
+                    return new LuminaBridgeBuilder().lumina_InitBridgeBuild(coordinatePair, coordinate ,params[0]);
                 case LUMINA_MINECRAFT_BSN_TUNNEL:
-                    LuminaTunnelBuilder tunnelBuilder = new LuminaTunnelBuilder();
-                    return tunnelBuilder.lumina_InitTunnelBuild(coordinatePair, coordinate ,params[0]);
+//                    LuminaTunnelBuilder tunnelBuilder = new LuminaTunnelBuilder();
+                    return new LuminaTunnelBuilder().lumina_InitTunnelBuild(coordinatePair, coordinate ,params[0]);
                 case LUMINA_MINECRAFT_BSN_SHELTER:
-                    LuminaShelterBuilder shelterBuilder = new LuminaShelterBuilder();
-                    return shelterBuilder.lumina_InitShelterBuild(coordinatePair, coordinate ,params[0]);
+//                    LuminaShelterBuilder shelterBuilder = new LuminaShelterBuilder();
+                    return new LuminaShelterBuilder().lumina_InitShelterBuild(coordinatePair, coordinate ,params[0]);
                 default:
                     System.out.println("[AI-LM][error] LuminaSystem 序列="+sequenceName+" 执行失败。原因是未找到对应序列。程序即将终止。");
                     return null;
